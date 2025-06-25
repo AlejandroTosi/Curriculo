@@ -1,6 +1,7 @@
 Nesta pasta se encontra 3 projetos pessoais feitos até o momento.
 
 1- Uma calculadora de juros, com opções de:
+
    *Cálculo com parâmetros específicos: 
        Retorna valor final, lucro, e valor estimado para o proximo mes.
    *Calculadora com variações de 1% a 5%: 
