@@ -14,7 +14,7 @@ Nesta pasta se encontra 3 projetos pessoais feitos até o momento.
 2 - Um jogo de combate em turnos baseado em atributos e lógica de decisão, no qual exploro conceitos de programação orientada a objetos como uso de classes, composição de objetos, arrays e inserção dinâmica de dados. O sistema permite associar equipamentos (armas e armaduras) aos personagens, influenciando diretamente na simulação do combate.
 
 3- Um sistema de produção baseado em jogos como Factorio, com estrutura de receitas, recursos, construções e pesquisas.  
-Feito em Java com uso de banco de dados SQLite.
+Feito em Java com uso de banco de dados SQLite.(em andamento)
 
    * Possui um menu interativo no terminal com as seguintes opções:
      - **Listar receitas**: mostra os ingredientes, quantidades e tempo necessário.
