@@ -66,6 +66,45 @@ CREATE TABLE pesquisas (
 );
 
 
+
+CREATE TABLE saida_desejada(
+  id INTEGER PRIMARY KEY,
+  id_receita INTEGER,
+  quantidade INTEGER,
+  FOREIGN KEY (id_receita) REFERENCES receita(saida)
+  );
+
+
+CREATE VIEW view_saida_desejada AS
+SELECT
+    s.id,
+    s.id_receita,
+    r_saida.nome AS produto_final,
+    s.quantidade AS quantidade_desejada,
+    rec.tempo,
+    s.quantidade * rec.tempo AS tempo_total,
+    s.quantidade / rec.tempo AS maquinas_necessarias,
+    r1.nome AS ingrediente1,
+    rec.quantidade1,
+    rec.quantidade1 * s.quantidade AS custo_total_ingrediente1,
+    r2.nome AS ingrediente2,
+    rec.quantidade2,
+    rec.quantidade2 * s.quantidade AS custo_total_ingrediente2,
+    r3.nome AS ingrediente3,
+    rec.quantidade3,
+    rec.quantidade3 * s.quantidade AS custo_total_ingrediente3,
+    r4.nome AS ingrediente4,
+    rec.quantidade4,
+    rec.quantidade4 * s.quantidade AS custo_total_ingrediente4
+FROM saida_desejada AS s
+JOIN receita AS rec ON s.id_receita = rec.id
+JOIN recurso AS r_saida ON rec.saida = r_saida.id
+LEFT JOIN recurso AS r1 ON rec.produto1_id = r1.id
+LEFT JOIN recurso AS r2 ON rec.produto2_id = r2.id
+LEFT JOIN recurso AS r3 ON rec.produto3_id = r3.id
+LEFT JOIN recurso AS r4 ON rec.produto4_id = r4.id;
+
+
 CREATE VIEW view_receitas AS
 SELECT
     rec.id,
@@ -85,8 +124,6 @@ LEFT JOIN recurso AS r1 ON rec.produto1_id = r1.id
 LEFT JOIN recurso AS r2 ON rec.produto2_id = r2.id
 LEFT JOIN recurso AS r3 ON rec.produto3_id = r3.id
 LEFT JOIN recurso AS r4 ON rec.produto4_id = r4.id;
-
-
 
 
 CREATE VIEW view_pesquisas AS
@@ -110,7 +147,6 @@ cons.quantidade,
 cons.producao_receita_id
 FROM construtora AS cons
 JOIN receita ON cons.producao_receita_id = receita.id;
-
 
 
 INSERT INTO recurso (id, nome, tipo) VALUES
